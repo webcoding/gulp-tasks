@@ -11,7 +11,7 @@ gulp clean  //洗刷刷，重新来！
 gulp copy   //copy 项目依赖文件到编译目录，如字体，外部依赖的 css/js
 gulp html   //copy 项目 html 到编译目录
 
-gulp styles //编译样式，根据配置类型，可编译 LESS 或 SASS
+gulp styles //编译样式，根据配置类型，可编译 less sass 或 stylus
 gulp browserify //编译 JS，编译 CommonJS 格式的模块
             styles 和 browserify，在开发环境通过 map 调试，生成环境其引用会追加版本号
 gulp server //开发预览服务器
