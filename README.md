@@ -2,7 +2,7 @@
 
 收集开发常用的 tasks 任务列表，汇总成 gulp-tasks-build。
 
-基于 amazeui-gulp-tasks 的结构，综合常用的 tasks 任务列表汇总而成，让 Coding 更 Happy ！！！。
+基于 amazeui-gulp-tasks 的结构，综合常用的 tasks 任务列表汇总而成，让 Coding 更 Happy ！。
 
 ### Task list
 
