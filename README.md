@@ -1,8 +1,8 @@
 # gulp-tasks
 
-常用编译工具汇总(npm name：gulp-tasks-build)，happyCoding 开发 gulp 任务 。
+收集开发常用的 tasks 任务列表，汇总成 gulp-tasks-build。
 
-基于 amazeui-gulp-tasks 的结构，提取自己开发常用的 tasks 任务列表，让 Coding 更 Happy！！！
+基于 amazeui-gulp-tasks 的结构，综合常用的 tasks 任务列表汇总而成，让 Coding 更 Happy ！！！。
 
 ### Task list
 

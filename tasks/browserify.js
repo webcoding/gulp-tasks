@@ -46,6 +46,8 @@ module.exports = function(config) {
   var bundleInit = function() {
     var b = browserify(assign({}, watchify.args, options.bundleOptions));
 
+    // 使用 watchify，不再需要使用 gulp 监视 JS 变化
+    // gulp.watch('app/js/**/*', ['browserify']);
     if (!isProduction) {
       b = watchify(b);
       b.on('update', function() {

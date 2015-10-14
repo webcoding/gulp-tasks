@@ -6,95 +6,25 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 
 // NODE_ENV=production gulp
-var isProduction = process.env.NODE_ENV === "production";
-
-var configUtil = {
-  autoprefixerBrowsers : [
-    'ie >= 9',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 2.3',
-    'bb >= 10'
-  ]
-}
+// var isProduction = process.env.NODE_ENV === "production";
 
 var packageInfo = require('./package.json');
 
+var projectConfig = {
+  // isProduction: isProduction  //可以不传入，内部默认已做处理
+  projectName: 'tests',   //项目名称，可用于打 zip 包
+  srcRoot: 'tests',       //项目源目录
+  distRoot: 'dist'        //编译输出目录
+};
+
 var config = {
-  isProduction: isProduction,
-  pkg: packageInfo,
-  projectName: packageInfo.name,
+  projectName: projectConfig.projectName,
+  srcRoot: projectConfig.srcRoot,
+  distRoot: projectConfig.distRoot,
 
-  // release task
-  ghPages: {
-    src: 'dist/**/*'
-  },
+  pkg: packageInfo
 
-  // remote branch
-  git: {
-    branch: 'master'
-  },
-
-  browserSync: {
-    // port: 5000, //默认3000
-    // ui: {    //更改默认端口weinre 3001
-    //     port: 5001,
-    //     weinre: {
-    //         port: 9090
-    //     }
-    // },
-    // server: {
-    //   baseDir: 'dist/docs'
-    // },
-    open: "local", //external
-    notify: true,
-    logPrefix: 'happyCoding',
-    server: 'dist'
-  },
-
-  quoteSrc: ['dist/index.html'],
-
-  jshint: {
-    src: './tasks/*.js'
-  },
-
-  html: {
-    src: 'tests/*.html',
-    dist: 'dist'
-  },
-
-  // watch files and reload browserSync
-  bsWatches: 'dist/**/*',
-
-  // copy: {
-  //   src: [
-  //     'app/**/*',
-  //     '!app/*.html',
-  //     '!app/js/**/*',
-  //     // '!app/venders',
-  //     // '!app/i',
-  //     'bower_components/pure/pure-min.css'
-  //   ],
-  //   venders: {
-  //     src:['bower_components/pure/pure-min.css'],
-  //     dist: ['bower_components/pure/pure-min.css']
-  //   },
-  //
-  // },
-
-  styles: {
-    type: 'less', //编译类型 less sass 或 stylus，TODO：可优化为自动判断，根据后缀
-    src: './tests/less/test.less',
-    autoPrefixer: configUtil.autoprefixerBrowsers,
-    dist: 'dist/css',
-    watches: 'tests/**/*.less',
-    banner: false
-  },
-
+/* TODO：
   // docs:md
   md: {
     src: ['README.md'],
@@ -117,31 +47,12 @@ var config = {
     }
   },
 
-  // browserify
-  browserify: {
-    bundleOptions: {
-      entries: './tests/js/app.js',
-      debug: !isProduction,
-      cache: {},
-      packageCache: {}
-    },
-    filename: 'app.js',
-    transforms: [
-      ['browserify-shim', {global: true}]
-    ],
-    plugins: [],
-    dist: 'dist/js',
-    banner: false
-  },
-
-  // clean path
-  clean: 'dist',
-
   uglify: {
     src: './tasks/*.js',
     dist: './dist',
     banner: false
   }
+*/
 };
 
 require('./index')(config);
@@ -162,6 +73,23 @@ gulp.task('dev', function(cb) {
 gulp.task('test', function(cb) {
   runSequence('build', 'server', cb);
 });
+
+
+
+
+
+
+
+// 使用 webpack 打包合并静态文件
+//gulp-webpack 即 shama：webpack-stream
+var webpack = require('webpack');
+var gulpWebpack = require('webpack-stream');
+// var webpackConfig = require('webpack-config.js');
+
+
+
+
+
 
 
 /*

@@ -4,10 +4,15 @@
 //module.exports = requireDir('./tasks', { recurse: true });
 
 var gulp = require('gulp');
+var _ = require('lodash');
+var getConfigDefault = require('./config.default.js');
 
 function initTasks(config) {
   // TODO: 添加默认配置
   config = config || {};
+
+  config = _.assign({}, getConfigDefault(config), config);
+  //config = _.defaultsDeep({}, config, __configDefault); //深度设置默认值
 
   var gutil = require('gulp-util');
 
@@ -23,6 +28,14 @@ function initTasks(config) {
       data: {
         pkg: config.pkg
       }
+    }
+  };
+
+  // 错误处理 防止任务中断
+  var errorHandle = {
+    errorHandler: function (err) {
+      console.log(err);
+      this.emit('end');
     }
   };
 
