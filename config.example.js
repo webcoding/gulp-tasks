@@ -33,7 +33,7 @@ module.exports = {
   // styles: {
   //   type: 'sass', //编译类型 less sass 或 stylus，TODO：可优化为自动判断，根据后缀
   //   src: projectConfig.srcRoot + '/scss/style.scss',
-  //   autoPrefixer: configUtil.autoprefixerBrowsers,
+  //   autoPrefixer: [],
   //   dist: projectConfig.distRoot + '/css',
   //   watches: projectConfig.srcRoot + '/**/*.scss',
   //   banner: false

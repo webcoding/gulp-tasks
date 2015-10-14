@@ -81,7 +81,7 @@ var config = {
   styles: {
     type: 'sass', //编译类型 less sass 或 stylus
     src: projectConfig.srcRoot + '/scss/style.scss',
-    autoPrefixer: configUtil.autoprefixerBrowsers,
+    autoPrefixer: [],  //autoPrefixer 配置，如果为空，则按项目内部默认值设定
     dist: projectConfig.distRoot + '/css',
     watches: projectConfig.srcRoot + '/**/*.scss',
     banner: false
@@ -100,6 +100,22 @@ gulp.task('build', function(cb) {
 gulp.task('dev', function(cb) {
   runSequence('build', 'server', cb);
 });
+```
+
+### autoPrefixer 默认配置
+
+```
+var autoPrefixer = [
+  'ie >= 9',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 2.3',
+  'bb >= 10'
+];
 ```
 
 ## 任务及配置说明

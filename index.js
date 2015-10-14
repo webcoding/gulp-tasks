@@ -11,7 +11,14 @@ function initTasks(gulp, config) {
   // TODO: 添加默认配置
   config = config || {};
 
-  config = _.assign({}, getConfigDefault(config), config);
+  var _configDefault = getConfigDefault(config);
+  config = _.assign({}, _configDefault, config);
+
+  if (config.styles) {
+    if (!config.styles.autoPrefixer || _.isEmpty(config.styles.autoPrefixer) ) {
+      config.styles.autoPrefixer = _configDefault.styles.autoPrefixer;
+    }
+  }
   //config = _.defaultsDeep({}, config, __configDefault); //深度设置默认值
 
   var gutil = require('gulp-util');

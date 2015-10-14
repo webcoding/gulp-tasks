@@ -1,6 +1,6 @@
 {
   "name": "gulp-tasks-build",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "常用 gulp-tasks 任务汇总。",
   "main": "index.js",
   "scripts": {
