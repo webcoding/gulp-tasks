@@ -1,0 +1,53 @@
+
+
+$font--sans-serif: 'Open Sans', Arial, sans-serif;
+$font--monospace: Consolas, Monaco, 'Inconsolata', monospace;
+
+h1,
+h2,
+h3 {
+  font-weight: initial;
+}
+
+h1 {
+  margin: 0.5rem 0;
+}
+
+h2 {
+  margin: 0.4rem 0;
+}
+
+h3 {
+  margin: 0.3rem 0;
+}
+
+body {
+  background-color: #FEFEFE;
+  color: #555;
+  font-family: $font--sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+a {
+  color: #0A689D;
+  text-decoration: none;
+
+  &:hover {
+    color: #2C7DAA;
+  }
+}
+
+.font--monospace {
+  font-family: $font--monospace;
+}
+
+// Max width wrapper
+$wrapper-width: pxtoem(1140, 16);
+
+// = Responsive
+// -----------------------------
+$width-large: 75em; // 1200/16
+$width-medium: 62em; // 992/16
+$width-small: 48em; // 768/16
