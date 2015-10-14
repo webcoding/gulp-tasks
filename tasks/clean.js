@@ -1,10 +1,9 @@
 'use strict';
 
-var gulp = require('gulp');
 var del = require('del');
 
 // 洗刷刷
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   gulp.task('clean', function(cb) {
     //clean path
     var cleanPath = config.clean || 'dist';

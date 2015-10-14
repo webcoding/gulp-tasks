@@ -1,12 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
 var git = require('gulp-git');
 var ghPages = require('gulp-gh-pages');
 
 // Task: release
 // add tag then publish to npm and push to git
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var runSequence = require('run-sequence').use(gulp);
 
   gulp.task('publish:tag', function(done) {

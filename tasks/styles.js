@@ -1,6 +1,5 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var md5 = require('gulp-md5-plus');
 var autoPrefixer = require('gulp-autoprefixer');
@@ -40,7 +39,7 @@ function makeArray() {
   return arr;
 }
 
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var runSequence = require('run-sequence').use(gulp);
   var isProduction = config.isProduction || process.env.NODE_ENV === "production";
 

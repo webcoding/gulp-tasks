@@ -1,10 +1,9 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 // 打 zip 包
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   gulp.task('zip', function(cb) {
     var options = config.zip;
 

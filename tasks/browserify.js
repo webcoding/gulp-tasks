@@ -1,6 +1,5 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var md5 = require('gulp-md5-plus');
 
@@ -33,7 +32,7 @@ browserify: {
 
 */
 
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var options = config.browserify || {};
   var isProduction = config.isProduction || process.env.NODE_ENV === "production";
 

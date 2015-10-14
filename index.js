@@ -7,7 +7,7 @@ var gulp = require('gulp');
 var _ = require('lodash');
 var getConfigDefault = require('./config.default.js');
 
-function initTasks(config) {
+function initTasks(gulp, config) {
   // TODO: 添加默认配置
   config = config || {};
 
@@ -40,35 +40,35 @@ function initTasks(config) {
   };
 
   // task: clean
-  config.clean && require('./tasks/clean')(config);
+  require('./tasks/clean')(gulp, config);
 
   // task: copy
-  config.copy && require('./tasks/copy')(config);
+  config.copy && require('./tasks/copy')(gulp, config);
 
   // task: html
-  config.html && require('./tasks/html')(config);
+  require('./tasks/html')(gulp, config);
 
   // task: jshint
-  config.jshint && require('./tasks/jshint')(config);
+  config.jshint && require('./tasks/jshint')(gulp, config);
 
   // task: browserify
-  config.browserify && require('./tasks/browserify')(config);
+  config.browserify && require('./tasks/browserify')(gulp, config);
 
   // task: styles
-  config.styles && require('./tasks/styles')(config);
+  config.styles && require('./tasks/styles')(gulp, config);
 
   // dev server: server
-  require('./tasks/server')(config);
+  require('./tasks/server')(gulp, config);
 
   // task: uglify
-  config.uglify && require('./tasks/uglify')(config);
+  config.uglify && require('./tasks/uglify')(gulp, config);
 
   // task: markdown
-  config.md && require('./tasks/markdown')(config);
+  config.md && require('./tasks/markdown')(gulp, config);
 
 
   // Release GitHub & npm: ['release']
-  require('./tasks/release')(config);
+  require('./tasks/release')(gulp, config);
 }
 
 module.exports = initTasks;

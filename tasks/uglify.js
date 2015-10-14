@@ -1,6 +1,5 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 /*
@@ -11,7 +10,7 @@ var header = require('gulp-header');
 */
 
 // Task: uglify
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var runSequence = require('run-sequence').use(gulp);
   var options = config.uglify || {};
   var hasBanner = !!options.banner;

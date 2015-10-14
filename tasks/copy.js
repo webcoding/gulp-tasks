@@ -1,6 +1,5 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 /*
 var cache = require('gulp-cache');
@@ -8,7 +7,7 @@ var imagemin = require('gulp-imagemin');
 var size = require('gulp-size');
 */
 
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var runSequence = require('run-sequence').use(gulp);
   var isProduction = config.isProduction || process.env.NODE_ENV === "production";
 

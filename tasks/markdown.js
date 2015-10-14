@@ -1,12 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
 var markJSON = require('markit-json');
 var docUtil = require('amazeui-doc-util');
 var rename = require('gulp-rename');
 
 // Task: markdown parser
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   gulp.task('docs:md', function() {
     return gulp.src(config.md.src)
       .pipe(markJSON(docUtil.markedOptions))

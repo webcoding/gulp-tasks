@@ -1,6 +1,6 @@
 {
   "name": "gulp-tasks-build",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "常用 gulp-tasks 任务汇总。",
   "main": "index.js",
   "scripts": {
@@ -19,17 +19,11 @@
   ],
   "dependencies": {
     "browser-sync": "^2.3.0",
-    "gulp": "^3.8.11",
-    "lodash": "^3.10.1",
-    "webpack": "^1.12.2",
-    "webpack-stream": "^2.1.1"
-  },
-  "devDependencies": {
-    "amazeui-doc-util": "^0.3.0",
     "browserify": "^10.2.3",
     "browserify-shim": "^3.8.7",
     "del": "^1.1.1",
     "derequire": "^2.0.0",
+    "gulp": "^3.8.11",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-cache": "^0.2.9",
     "gulp-concat": "^2.5.2",
@@ -57,6 +51,7 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
     "gulp-zip": "^3.0.2",
+    "lodash": "^3.10.1",
     "markit-json": "^0.2.1",
     "object-assign": "^4.0.1",
     "require-dir": "^0.3.0",
@@ -64,6 +59,11 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1"
+  },
+  "devDependencies": {
+    "amazeui-doc-util": "^0.3.0",
+    "webpack": "^1.12.2",
+    "webpack-stream": "^2.1.1"
   },
   "peerDependencies": {
     "react": "*"

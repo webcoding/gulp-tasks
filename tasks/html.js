@@ -1,12 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 /*
 var eslint = require('gulp-eslint');
 */
 
-module.exports = function(config) {
+module.exports = function(gulp, config) {
   var isProduction = config.isProduction;
   // 压缩 HTML
   gulp.task('html', function () {

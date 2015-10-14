@@ -65,24 +65,40 @@ var gulp = require('gulp');
 var tasks = require('gulp-tasks-build');
 var runSequence = require('run-sequence');
 
-var config = {
-  // 任务配置
+// 项目配置
+var projectConfig = {
+  projectName: 'tests',   //项目名称，可用于打 zip 包
+  srcRoot: 'tests',       //项目源目录
+  distRoot: 'dist'        //编译输出目录
 };
 
-tasks(config);
+// Task配置
+var config = {
+  projectName: projectConfig.projectName,
+  srcRoot: projectConfig.srcRoot,
+  distRoot: projectConfig.distRoot,
+
+  styles: {
+    type: 'sass', //编译类型 less sass 或 stylus
+    src: projectConfig.srcRoot + '/scss/style.scss',
+    autoPrefixer: configUtil.autoprefixerBrowsers,
+    dist: projectConfig.distRoot + '/css',
+    watches: projectConfig.srcRoot + '/**/*.scss',
+    banner: false
+  },
+};
+
+tasks(gulp, config);
 
 gulp.task('build', function(cb) {
-  runSequence('clean', ['copy', 'html', 'browserify', 'styles'], cb);
+  //根据你的需求，选择需要的 tasks 任务，别忘了配置
+  runSequence('clean', ['html', 'browserify', 'styles'], cb);
 });
 
 // 不要直接使用 gulp.task('dev', ['build', 'server']);
 // build 和 server 没有先后执行顺序，可能时序错乱，建议如下使用
 gulp.task('dev', function(cb) {
   runSequence('build', 'server', cb);
-});
-
-gulp.task('publish', function(cb) {
-  ...
 });
 ```
 

@@ -55,7 +55,7 @@ var config = {
 */
 };
 
-require('./index')(config);
+require('./index')(gulp, config);
 
 gulp.task('build', function(cb) {
   runSequence('clean', ['html', 'browserify', 'styles'], cb);

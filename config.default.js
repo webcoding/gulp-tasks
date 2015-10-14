@@ -14,7 +14,7 @@ var configUtil = {
   ]
 };
 
-/* 默认项目结果如下:
+/* 默认项目结构如下:
 
 源文件 app
 |- /styles        //样式，可以为 less/sass/stylus
