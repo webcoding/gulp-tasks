@@ -14,23 +14,28 @@ module.exports = function(gulp, config) {
   var options = config.copy || {},
       venders = options.venders || {};
 
+  if (!options.src.length) {
+    options.src = '';
+  }
+
   //TDK
 
   // 拷贝外部依赖以及 html 等相关文件
   gulp.task('copy:all', ['copy:venders'], function() {
     return gulp.src(options.src, {
       dot: true //TODO：这个参数干嘛的
-    }).pipe(gulp.dest(function(file) {
+    })
+    .pipe(gulp.dest(function(file) {
       //关于 js 以及 styles 已经在对应的 tasks 中输出，这里不用 copy；
       //这里要 copy 的是 html 以及字体文件（图片可以使用 images 处理）
       var filePath = file.path.toLowerCase();
 
-      if (filePath.indexOf('.css') > -1) {
-        return paths.dist.css;
-      } else if (filePath.indexOf('fontawesome') > -1) {
-        return paths.dist.base;
-      }
-      return paths.dist.base;
+      // if (filePath.indexOf('.css') > -1) {
+      //   return paths.dist.css;
+      // } else if (filePath.indexOf('fontawesome') > -1) {
+      //   return paths.dist.base;
+      // }
+      return options.base;
     }))
     .pipe($.size({title: 'copy'}));
   });
@@ -64,18 +69,18 @@ module.exports = function(gulp, config) {
   });
 
 };
-module.exports = function(config) {
+// module.exports = function(config) {
 
-  gulp.task('copy', function () {
-    var options = config.copy;
-    return gulp.src(path.src || '') // 输入 '' 或 []
-      .pipe($.rename(function(pathName) {
-        return path.renameFunction ? path.distFunction(pathName) : path.rename;
-      }))
-      .pipe(gulp.dest(function(file) {
-        var filePath = file.path.toLowerCase();
-        return path.distFunction ? path.distFunction(filePath) : path.dist;
-      })
-      .pipe($.size({title: 'copy'}));
-  });
-};
+//   gulp.task('copy', function () {
+//     var options = config.copy;
+//     return gulp.src(path.src || '') // 输入 '' 或 []
+//       .pipe($.rename(function(pathName) {
+//         return path.renameFunction ? path.distFunction(pathName) : path.rename;
+//       }))
+//       .pipe(gulp.dest(function(file) {
+//         var filePath = file.path.toLowerCase();
+//         return path.distFunction ? path.distFunction(filePath) : path.dist;
+//       }))
+//       .pipe( $.size({title: 'copy'}) );
+//   });
+// };

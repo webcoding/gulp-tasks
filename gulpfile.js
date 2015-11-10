@@ -22,9 +22,24 @@ var config = {
   srcRoot: projectConfig.srcRoot,
   distRoot: projectConfig.distRoot,
 
-  pkg: packageInfo
+  pkg: packageInfo,
 
-/* TODO：
+  styles: {
+    type: 'less',
+    src: projectConfig.srcRoot + '/less/test.less',
+    dist: projectConfig.distRoot + '/css',
+    watches: projectConfig.srcRoot + '/**/*.less',
+    banner: false
+  },
+
+  // styles: {
+  //   type: 'scss',
+  //   src: projectConfig.srcRoot + '/scss/test.scss',
+  //   dist: projectConfig.distRoot + '/css',
+  //   watches: projectConfig.srcRoot + '/**/*.scss',
+  //   banner: false
+  // },
+
   // docs:md
   md: {
     src: ['README.md'],
@@ -46,7 +61,7 @@ var config = {
       return 'dist/docs';
     }
   },
-
+/* TODO：
   uglify: {
     src: './tasks/*.js',
     dist: './dist',

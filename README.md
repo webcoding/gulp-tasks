@@ -1,8 +1,35 @@
 # gulp-tasks
 
-收集开发常用的 tasks 任务列表，汇总成 gulp-tasks-build。
+收集开发常用的 tasks 任务列表，汇总成 [gulp-tasks-build](https://www.npmjs.com/package/gulp-tasks-build)。
 
 基于 amazeui-gulp-tasks 的结构，综合常用的 tasks 任务列表汇总而成，让 Coding 更 Happy ！。
+
+## 问题
+
+痛苦的安装，每一个项目引用，都要 install 这个东东，并且编译依赖，好慢啊，而且明显的有点浪费，本来只需要安装一次就行了啊。
+应该提供一种方式，比如我安装到全局，但在项目中可以引用，这样就方便了。
+
+所以要使用一种能自动 require('全局模块') 的方式给项目引用，我最先想到的是在想使用的地方，使用npm link到local。
+
+```
+//这个配置待定下，上次使用的配置，忘记了，改天再整理下
+#在项目开发目录，使用软链接 ln –s 源文件 目标文件(这个效果不好，貌似缺了某些依赖，运行不起来)
+ln -s /usr/local/lib/node_modules/require-global ./node_modules/require-global
+ln -s /usr/local/lib/node_modules/gulp ./node_modules/gulp
+ln -s /usr/local/lib/node_modules/run-sequence ./node_modules/run-sequence
+ln -s /usr/local/lib/node_modules/gulp-tasks-build ./node_modules/gulp-tasks-build
+
+//我是要开发修改的，不安装全局了（sass 每次编译好慢）
+ln -s ~/github/webcoding/gulp-tasks ./node_modules/gulp-tasks-build
+
+### 我想到可以install 一个模块去加载全局的模块，于是发现了 require-global
+npm install -g require-global
+```
+
+如果不用显式的运行，如果全局安装有，自动去查询加载就好了。
+
+在网上也发现已经有这样的[需求](http://segmentfault.com/q/1010000000396247)，weakish 回答可以尝试使用
+[autod](https://github.com/node-modules/autod)，这个是什么鬼，通过项目文件引用自动生成依赖，貌似不合适。
 
 ### Task list
 
@@ -21,11 +48,14 @@ gulp server //开发预览服务器
 
 ### TODO list
 
+使用 webpack 形式组织及打包文件?
+
+这里不集成了，因为 webpack 打包的独立性，独自汇总一个使用示例项目，参见 webpack-tools
+
 ```
 rename.js  //重命名脚本，可集成编译或copy 的任务流中，完成指定重命名
 replace.js //自定义替换脚本，可集成编译或copy 的任务流中，完成指定内容的替换
 gulp uglify  //压缩/丑化 task，待定（编译处已处理）
-gulp webpack //使用 webpack 形式组织及打包文件
 gulp jshint //JS 格式校验（暂未使用）
 gulp images  //对样式中图片进行处理（暂未使用）
                gulp-imagemin + imagemin-pngquant 或 gulp-tinypng 形式
@@ -80,7 +110,7 @@ var config = {
 
   styles: {
     type: 'sass', //编译类型 less sass 或 stylus
-    src: projectConfig.srcRoot + '/scss/style.scss',
+    src: projectConfig.srcRoot + '/scss/style.scss', //也可以是数组
     autoPrefixer: [],  //autoPrefixer 配置，如果为空，则按项目内部默认值设定
     dist: projectConfig.distRoot + '/css',
     watches: projectConfig.srcRoot + '/**/*.scss',
