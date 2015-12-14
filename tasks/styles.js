@@ -56,7 +56,7 @@ module.exports = function(gulp, config) {
     var s = (gulp.src(options.src)
       .pipe($.sourcemaps.init())
       .pipe($.plumber())  //自动处理全部错误信息防止因为错误而导致 watch 不正常工作
-      .pipe((options.type === 'less') ? $.less() : (options.type === 'sass' ? $.sass() : $.stylus()))  //最好自动验证输入格式
+      .pipe((options.type === 'less') ? $.less() : (options.type === 'stylus' ? $.stylus() : $.sass()))  //最好自动验证输入格式
       .pipe($.autoprefixer({browsers: options.autoPrefixer}))
       .pipe($.if(hasBanner, $.header(bannerTpl, bannerData)))
       //.pipe($.rename(function(path){

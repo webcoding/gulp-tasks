@@ -24,21 +24,21 @@ var config = {
 
   pkg: packageInfo,
 
-  styles: {
-    type: 'less',
-    src: projectConfig.srcRoot + '/less/test.less',
-    dist: projectConfig.distRoot + '/css',
-    watches: projectConfig.srcRoot + '/**/*.less',
-    banner: false
-  },
-
   // styles: {
-  //   type: 'scss',
-  //   src: projectConfig.srcRoot + '/scss/test.scss',
+  //   type: 'less',
+  //   src: projectConfig.srcRoot + '/less/test.less',
   //   dist: projectConfig.distRoot + '/css',
-  //   watches: projectConfig.srcRoot + '/**/*.scss',
+  //   watches: projectConfig.srcRoot + '/**/*.less',
   //   banner: false
   // },
+
+  styles: {
+    type: 'scss',
+    src: projectConfig.srcRoot + '/scss/test.scss',
+    dist: projectConfig.distRoot + '/css',
+    watches: projectConfig.srcRoot + '/**/*.scss',
+    banner: false
+  },
 
   // docs:md
   md: {

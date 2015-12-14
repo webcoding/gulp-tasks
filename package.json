@@ -42,6 +42,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.1.1",
     "gulp-sftp": "^0.1.5",
     "gulp-shell": "^0.5.1",
     "gulp-size": "^2.0.0",
