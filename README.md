@@ -24,6 +24,9 @@ ln -s ~/github/webcoding/gulp-tasks ./node_modules/gulp-tasks-build
 
 ### 我想到可以install 一个模块去加载全局的模块，于是发现了 require-global
 npm install -g require-global
+
+
+browser-sync browserify browserify-shim del derequire gulp gulp-autoprefixer gulp-cache gulp-concat gulp-csso gulp-eslint gulp-gh-pages gulp-git gulp-header gulp-if gulp-imagemin gulp-less gulp-load-plugins gulp-md5-plus gulp-minify-html gulp-nodemon gulp-plumber gulp-rename gulp-replace gulp-sftp gulp-shell gulp-size gulp-sourcemaps gulp-stylus gulp-uglify gulp-util gulp-zip lodash markit-json object-assign require-dir run-sequence vinyl-buffer vinyl-source-stream watchify
 ```
 
 如果不用显式的运行，如果全局安装有，自动去查询加载就好了。

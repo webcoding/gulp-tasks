@@ -8,6 +8,6 @@ module.exports = function(gulp, config) {
     //clean path
     var cleanPath = config.clean || 'dist';
     console.log('clean:' + cleanPath);
-    del(cleanPath, cb);
+    return del(cleanPath, cb);
   });
 };
