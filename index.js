@@ -46,6 +46,14 @@ function initTasks(gulp, config) {
     }
   };
 
+
+  /**
+  也可以使用下面的语法引入，参看：http://www.gulpjs.com.cn/docs/recipes/split-tasks-across-multiple-files/
+
+  var requireDir = require('require-dir');
+  var dir = requireDir('./tasks');
+  */
+
   // task: clean
   require('./tasks/clean')(gulp, config);
 
