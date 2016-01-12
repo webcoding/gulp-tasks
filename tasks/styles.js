@@ -68,7 +68,10 @@ module.exports = function(gulp, config) {
       .pipe(gulp.dest(options.dist))
     );
 
-    return !isProduction ? s : s.pipe($.csso())
+    return !isProduction ? s : s.pipe($.csso({}))
+      // 这个 csso 压缩 css 出问题了，莫名的问题，到时 swiper  组件在部分浏览器下出 bug（参看hsq项目）
+      // 因为 csso 把部分代码干掉了(但传入空对象参数，就 OK 了，奇怪？？，具体参数觉得应该是property，重复的属性是否合并)
+      // 如.swiper-wrapper: display: flex; 由autoprefixer 转化的 display: -webkit-box;给删除了，手动书写的，也会删除
       .pipe($.rename({suffix: '.min'}))
       //.pipe($.if(hasBanner, $.header(bannerTpl, bannerData)))
       .pipe(md5(10, config.quoteSrc))
